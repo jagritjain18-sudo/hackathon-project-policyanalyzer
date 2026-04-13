@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AI-powered policy document analysis tool" />
+  <title>PolicyPirates - AI Policy Intelligence</title>
+  <link rel="stylesheet" href="policypirates_frontend.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar" role="banner">
+      <div class="brand">
+        <div class="brand-icon" aria-hidden="true">
+          <img src="logo.png" alt="Policy Lens Logo" loading="lazy" />
+        </div>
+        <div>
+          <h1>PolicyPirates</h1>
+          <p>AI Policy Intelligence Platform</p>
+        </div>
+      </div>
+      <nav class="topnav" role="navigation" aria-label="Main navigation">
+        <a href="#upload" aria-label="Go to upload section">Upload</a>
+        <a href="#summary" aria-label="Go to summary section">Summary</a>
+        <a href="#snapshot" aria-label="Go to snapshot section">Snapshot</a>
+        <a href="#chat" aria-label="Go to chat section">Chat</a>
+      </nav>
+    </header>
+
+    <main role="main">
+      <section class="hero-panel" id="upload" aria-labelledby="upload-heading">
+        <div class="hero-content">
+          <p class="eyebrow" aria-hidden="true">AI Policy Intelligence</p>
+          <h2 id="upload-heading">Upload your PDF to generate instant structured insights.</h2>
+          <p class="hero-description">Get comprehensive policy analysis with AI-powered coverage detection, benefit extraction, and interactive Q&A capabilities.</p>
+        </div>
+        <div class="upload-card" role="region" aria-labelledby="upload-card-heading" tabindex="0">
+          <div class="upload-icon" aria-hidden="true">📄</div>
+          <h3 id="upload-card-heading" class="sr-only">PDF Upload Area</h3>
+          <p class="upload-label" id="upload-instructions">Drag & drop your PDF here, or click to select a file</p>
+          <div class="upload-actions">
+            <label class="button primary" role="button" tabindex="0">
+              <span class="button-text">Select PDF</span>
+              <span class="button-icon" aria-hidden="true">📎</span>
+            </label>
+            <span id="file-name" aria-live="polite" aria-atomic="true">No file selected</span>
+          </div>
+          <input type="file" id="pdf-input" accept="application/pdf" aria-describedby="upload-instructions" hidden />
+          <div class="upload-features" aria-hidden="true">
+            <span class="feature-tag">✓ Instant Analysis</span>
+            <span class="feature-tag">✓ AI-Powered</span>
+            <span class="feature-tag">✓ Secure Processing</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="status-grid" aria-label="Processing Status">
+        <article class="status-card" role="status" aria-live="polite">
+          <p class="label">File status</p>
+          <h3 id="status-title">Waiting for upload</h3>
+          <p id="status-detail">Upload a policy PDF to start generating summaries and snapshots.</p>
+          <div class="status-indicator" aria-hidden="true"></div>
+        </article>
+        <article class="status-card accent" role="status" aria-live="polite" aria-label="AI Processing Status">
+          <p class="label">AI processing</p>
+          <div class="loader-row">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            <span class="pulse-dot" aria-hidden="true"></span>
+            <span class="pulse-dot" aria-hidden="true"></span>
+            <span>Ready to analyze</span>
+          </div>
+          <div class="processing-steps" aria-hidden="true">
+            <div class="step completed">Document parsing</div>
+            <div class="step active">AI analysis</div>
+            <div class="step pending">Generating insights</div>
+          </div>
+        </article>
+      </section>
+      
+      <section class="snapshot-grid-section" id="snapshot" aria-labelledby="snapshot-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Snapshot cards</p>
+            <h2 id="snapshot-heading">Structured policy snapshot</h2>
+            <p class="section-description">AI-generated insights organized into key categories for quick understanding.</p>
+          </div>
+          <button class="button secondary" id="generate-snapshot" aria-describedby="snapshot-help">
+            <span class="button-text">Generate Snapshot</span>
+            <span class="button-icon" aria-hidden="true">⚡</span>
+          </button>
+          <div id="snapshot-help" class="sr-only">Click to generate AI-powered policy analysis snapshot</div>
+        </div>
+        <div class="grid cards-grid" role="region" aria-label="Policy Analysis Cards">
+          <article class="card covered" role="article" tabindex="0">
+            <div class="card-header">
+              <h3>Covered</h3>
+              <div class="card-icon" aria-hidden="true">✅</div>
+            </div>
+            <div class="card-content">
+              <p id="covered-card">No data yet. Covered policies will appear here.</p>
+            </div>
+            <div class="card-stats" aria-hidden="true">
+              <span><i>📋</i> Policy Coverage</span>
+              <span><i>🟢</i> Active</span>
+            </div>
+          </article>
+          <article class="card not-covered" role="article" tabindex="0">
+            <div class="card-header">
+              <h3>Not Covered</h3>
+              <div class="card-icon" aria-hidden="true">❌</div>
+            </div>
+            <div class="card-content">
+              <p id="not-covered-card">Missing areas will show up in this card.</p>
+            </div>
+            <div class="card-stats" aria-hidden="true">
+              <span><i>⚠️</i> Gaps Found</span>
+              <span><i>🔴</i> Review</span>
+            </div>
+          </article>
+          <article class="card benefits" role="article" tabindex="0">
+            <div class="card-header">
+              <h3>Benefits</h3>
+              <div class="card-icon" aria-hidden="true">🎁</div>
+            </div>
+            <div class="card-content">
+              <p id="benefits-card">Key benefits are summarized here.</p>
+            </div>
+            <div class="card-stats" aria-hidden="true">
+              <span><i>💎</i> Perks</span>
+              <span><i>🔵</i> Value</span>
+            </div>
+          </article>
+          <article class="card scenarios" role="article" tabindex="0">
+            <div class="card-header">
+              <h3>Scenarios</h3>
+            <div class="card-icon" aria-hidden="true">🎭</div>
+            </div>
+            <div class="card-content">
+              <p id="scenarios-card">Real-world scenarios will be described here.</p>
+            </div>
+            <div class="card-stats" aria-hidden="true">
+              <span><i>📖</i> Examples</span>
+              <span><i>🟣</i> Insights</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="summary-panel" id="summary" aria-labelledby="summary-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">AI Insight Highlighting</p>
+            <h2 id="summary-heading">Summary output with color-coded insight lines</h2>
+            <p class="section-description">Comprehensive policy summary with intelligent highlighting of key information.</p>
+          </div>
+          <button class="button secondary" id="generate-summary" aria-describedby="summary-help">
+            <span class="button-text">Generate Summary</span>
+            <span class="button-icon" aria-hidden="true">📝</span>
+          </button>
+          <div id="summary-help" class="sr-only">Click to generate detailed policy summary with color-coded insights</div>
+        </div>
+        <div class="summary-content" id="summary-content" role="region" aria-live="polite" aria-label="Policy Summary">
+          <div class="summary-header">
+            <h3 class="summary-title">AI Summary</h3>
+            <div class="summary-icon" aria-hidden="true">🤖</div>
+          </div>
+          <div class="summary-body">
+            <p class="summary-placeholder">Once you upload a PDF, click generate summary to see benefits, covered topics, and missing points highlighted in green, blue, and red.</p>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="chat-section" id="chat" aria-labelledby="chat-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Q&A experience</p>
+            <h2 id="chat-heading">Ask questions about your PDF</h2>
+            <p class="section-description">Interactive AI assistant to answer specific questions about your policy document.</p>
+          </div>
+        </div>
+        <div class="chat-panel" role="region" aria-label="Policy Chat Interface">
+          <div class="chat-messages" id="chat-messages" role="log" aria-live="polite" aria-label="Chat Messages">
+            <div class="chat-message bot" role="article">
+              <div class="avatar" aria-hidden="true">🤖</div>
+              <div>
+                <p class="message-title">AI Assistant</p>
+                <p>Upload a PDF and ask me anything about your policy document. I'll provide detailed, accurate answers based on the content.</p>
+              </div>
+            </div>
+          </div>
+          <div class="chat-input-container">
+            <label for="chat-input" class="sr-only">Type your question about the policy document</label>
+            <textarea id="chat-input" placeholder="Ask a question about your policy document..." aria-describedby="chat-help"></textarea>
+            <div id="chat-help" class="sr-only">Type your question and press Send or Enter to get an AI-powered answer</div>
+            <button class="button primary" id="send-chat" aria-describedby="send-help">
+              <span class="button-text">Send</span>
+              <span class="button-icon" aria-hidden="true">💬</span>
+            </button>
+            <div id="send-help" class="sr-only">Send your question to the AI assistant</div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Skip to main content link for accessibility -->
+  <a href="#upload" class="skip-link sr-only">Skip to main content</a>
+
+  <script src="policypirates_frontend.js"></script>
+</body>
+</html>
