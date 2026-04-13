@@ -478,6 +478,7 @@ body {
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  box-sizing: border-box;
 }
 
 #chat-input:focus {
@@ -1442,4 +1443,38 @@ html {
 }
 .step:hover {
   transform: none;
+}
+
+.upload-features-left {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.upload-features-left .feature-tag {
+  font-size: 0.9rem;
+  color: #1e293b;
+  font-weight: 500;
+}
+
+.mini-flow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: nowrap;
+}
+
+.upload-features-left {
+  margin-top: 15px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.feature-tag {
+  font-size: 0.9rem;
+  color: #1e293b;
+  font-weight: 500;
 }
