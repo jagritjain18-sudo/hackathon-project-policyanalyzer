@@ -1,1 +1,8 @@
 Flask
+flask-cors
+Werkzeug
+python-dotenv
+PyPDF2
+google-genai
+google-generativeai
+streamlit
