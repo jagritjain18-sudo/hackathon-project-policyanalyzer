@@ -1,4 +1,4 @@
-# Policy Pirates
+# CodeX
 
 An AI-powered web application that analyzes insurance policy documents using Google's AI technology. Upload PDF policy documents and get comprehensive analysis including summaries, coverage details, exclusions, benefits, and real-world scenarios. Available as both a web application (Flask) and desktop application (Streamlit).
 
